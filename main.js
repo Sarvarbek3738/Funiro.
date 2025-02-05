@@ -1,18 +1,18 @@
 const apiLink =`https://fakestoreapi.com/products`
 const cardsDiv = document.querySelector(".section2cards")
 const showMoreBtn = document.querySelector("#showMoreBtn")
-// let data
+let data
 let isClick = false
 
 const getData = async (link)=>{
     const req = await fetch(link)
-    const data = await req.json()
-    showData(data)
+    data = await req.json()
+    showData()
     console.log(data);
     
 }
 
-const showData = (data) => {
+const showData = () => {
     if(isClick) {
         cardsDiv.innerHTML = ""
         data.forEach(element => {
@@ -67,7 +67,7 @@ const showData = (data) => {
 
 showMoreBtn.addEventListener("click" , () => {
     isClick = true
-    showData(data)
+    showData()
     showMoreBtn.style.display = "none"
 })
 
